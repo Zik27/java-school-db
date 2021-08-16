@@ -2,7 +2,7 @@ package homework.lab1;
 
 import java.util.Arrays;
 
-public class Task1 {
+public class ConverterTask0 {
     public static void main(String[] args) {
         double[] arrayOfDoubles = {2.0, 3.0, -4.0, 0.0, 20.0};
         int[] arrayOfInts = new int[arrayOfDoubles.length];
