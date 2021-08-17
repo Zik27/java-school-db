@@ -42,7 +42,7 @@ public class Client {
             return this;
         }
 
-        public Client build(){
+        public Client build() {
             return new Client(this);
         }
     }
