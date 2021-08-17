@@ -6,8 +6,9 @@ import java.util.stream.IntStream;
 public class SuperIntegerListImpl implements SuperIntegerList {
     private int[] array;
 
-    public SuperIntegerListImpl(int[] array) {
-        this.array = array;
+    public SuperIntegerListImpl(int... numbers) {
+        this.array = new int[numbers.length];
+        System.arraycopy(numbers, 0, array, 0, numbers.length);
     }
 
     @Override
