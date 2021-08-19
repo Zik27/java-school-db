@@ -1,7 +1,6 @@
 package enums.lab;
 
 public class HttpService {
-
     public void handleHttpCode(int httpCode) {
         HttpCode.executeByHttpCode(httpCode);
     }
