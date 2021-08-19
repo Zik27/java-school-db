@@ -26,5 +26,4 @@ public enum HttpCode {
                 .orElseThrow(() -> new IllegalStateException(String.format("Unsupported code: %s.", code)));
         httpCode.handler.execute();
     }
-
 }
