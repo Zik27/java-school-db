@@ -3,7 +3,7 @@ package homework.lab3.factories;
 import homework.lab3.heroes.*;
 
 public interface HeroFactory {
-    enum typesOfHeroes {
+    enum TypesOfHeroes {
         Hobbit {
             public Hero create() {
                 return new Hobbit();
