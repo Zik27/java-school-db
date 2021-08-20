@@ -1,23 +1,28 @@
 package homework.lab6;
 
 import homework.lab6.models.*;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class RadioAlarmImpl implements RadioAlarm {
+    private final Radio radio;
+    private final Alarm alarm;
+
     @Override
     public void a() {
-        System.out.println("It's A");
+        alarm.a();
     }
 
     @Override
     public void b() {
-        System.out.println("It's B");
+        alarm.b();
     }
     @Override
     public void c() {
-        System.out.println("It's C");
+        radio.c();
     }
     @Override
     public void d() {
-        System.out.println("It's D");
+        radio.c();
     }
 }
