@@ -2,7 +2,7 @@ package homework.lab5;
 
 import com.github.javafaker.Faker;
 import homework.lab3.utils.ParamsGenerator;
-import homework.lab5.mail_sender_service.MailSenderFactory;
+import homework.lab5.services.inf.MailSenderFactory;
 import lombok.SneakyThrows;
 
 public class Main {

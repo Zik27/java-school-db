@@ -1,6 +1,8 @@
-package homework.lab5.mail_sender_service;
+package homework.lab5.services.inf;
 
 import homework.lab5.MailInfo;
+import homework.lab5.services.MailSenderService;
+import homework.lab5.services.sender.*;
 
 import java.util.HashMap;
 import java.util.Map;

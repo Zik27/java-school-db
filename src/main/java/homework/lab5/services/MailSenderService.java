@@ -1,4 +1,4 @@
-package homework.lab5.mail_sender_service;
+package homework.lab5.services;
 
 import homework.lab5.MailInfo;
 
