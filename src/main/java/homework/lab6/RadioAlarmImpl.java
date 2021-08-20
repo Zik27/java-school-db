@@ -2,7 +2,7 @@ package homework.lab6;
 
 import homework.lab6.models.*;
 
-public class RadioAlarm implements Radio, Alarm {
+public class RadioAlarmImpl implements RadioAlarm {
     @Override
     public void a() {
         System.out.println("It's A");
