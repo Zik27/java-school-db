@@ -5,8 +5,8 @@ import java.util.function.Consumer;
 
 
 public class ListUtils {
-    public static <T> int countDuplicates(T obj, List<T> list) {
-        return (int) list.stream().filter(obj::equals).count();
+    public static <T> long countDuplicates(T obj, List<T> list) {
+        return list.stream().filter(obj::equals).count();
     }
 
     public static <T> void forEachWithDelay(List<T> list, int delay, Consumer<T> consumer) {
