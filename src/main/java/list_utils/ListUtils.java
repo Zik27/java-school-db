@@ -9,10 +9,6 @@ public class ListUtils {
         return list.stream().filter(obj::equals).count();
     }
 
-    public static int sumOfSalaries(List<Employee> list) {
-        return list.stream().mapToInt(Employee::getSalary).sum();
-    }
-
     public static <T> void forEachWithDelay(List<T> list, int delay, Consumer<T> consumer) {
         list.forEach(element -> {
             try {
@@ -22,10 +18,5 @@ public class ListUtils {
             }
             consumer.accept(element);
         });
-    }
-
-    public static void main(String[] args) {
-        List<Integer> test = List.of(2, 2, 3, 4);
-        forEachWithDelay(test, 1000, System.out::println);
     }
 }
