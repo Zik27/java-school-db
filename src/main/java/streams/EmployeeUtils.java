@@ -9,7 +9,9 @@ import static java.util.stream.Collectors.toMap;
 
 public class EmployeeUtils {
     public static int sumOfSalaries(List<Employee> list) {
-        return list.stream().mapToInt(Employee::getSalary).sum();
+        return list.stream()
+                .mapToInt(Employee::getSalary)
+                .sum();
     }
 
     public static List<String> sortBySalaries(List<Employee> list) {
