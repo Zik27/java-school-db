@@ -3,6 +3,7 @@ package streams;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toMap;
@@ -23,7 +24,7 @@ public class EmployeeUtils {
 
     public static Map<String, Employee> getUniqueEmplSortedBySalary(List<Employee> list) {
         return list.stream()
-                .collect(toMap(Employee::getName, empl -> empl, (e1, e2) -> e1.getSalary() > e2.getSalary() ? e1 : e2));
+                .collect(toMap(Employee::getName, Function.identity(), (e1, e2) -> e1.getSalary() > e2.getSalary() ? e1 : e2));
     }
 
     public static void main(String[] args) {
