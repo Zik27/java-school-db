@@ -8,13 +8,13 @@ import java.util.Arrays;
 
 public class SongUtils {
     @SneakyThrows
-    public static long countOfWords(String path) {
+    public static long countOfWordsInSong(String path) {
         return Files.lines(Paths.get(path))
-                .flatMap(line -> Arrays.stream(line.trim().split(" ")))
+                .flatMap(line -> Arrays.stream(line.trim().split("\\W+")))
                 .count();
     }
 
     public static void main(String[] args) {
-        System.out.println(countOfWords("src/main/resources/song.txt"));
+        System.out.println(countOfWordsInSong("src/main/resources/song.txt"));
     }
 }
