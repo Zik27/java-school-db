@@ -11,10 +11,9 @@ import static java.util.stream.Collectors.*;
 public class BlackFridayService {
     public void printBlackFridayPerYearSorted(int startYear, int endYear) {
         LocalDate startDate = LocalDate.of(startYear, 1, 13);
-        LocalDate endDate = LocalDate.of(endYear, 12, 14);
 
-        Stream.iterate(startDate, date -> date.isBefore(endDate), date -> date.plusMonths(1))
-                .filter(date -> date.getDayOfWeek().equals(DayOfWeek.FRIDAY))
+        Stream.iterate(startDate, date -> date.getYear() <= endYear, date -> date.plusMonths(1))
+                .filter(date -> date.getDayOfWeek() == DayOfWeek.FRIDAY)
                 .collect(groupingBy(LocalDate::getYear, counting()))
                 .entrySet()
                 .stream()
