@@ -1,5 +1,5 @@
 package spring;
 
 public interface ObjectFactory {
-    Object createObject(Class<?> type);
+    <T> T createObject(Class <T> type);
 }
