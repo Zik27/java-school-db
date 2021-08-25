@@ -36,12 +36,10 @@ public class ObjectFactory {
                 InjectRandomInt annotation = declaredField.getAnnotation(InjectRandomInt.class);
                 declaredField.setAccessible(true);
                 declaredField.setInt(t, ParamsGenerator.generateRndNumberInRange(annotation.min(), annotation.max()));
-                declaredField.setAccessible(false);
             }
             if (declaredField.isAnnotationPresent(InjectByType.class)) {
                 declaredField.setAccessible(true);
                 declaredField.set(t, instance.createObject(declaredField.getType()));
-                declaredField.setAccessible(false);
             }
         }
         return t;
