@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ObjectFactoryImpl implements ObjectFactory {
-    private static final ObjectFactory instance = new ObjectFactoryImpl();
+    private final static ObjectFactory instance = new ObjectFactoryImpl();
     private final static Map<Class<?>, Class<?>> interfaceMap = new HashMap<>();
 
     static {
@@ -19,10 +19,14 @@ public class ObjectFactoryImpl implements ObjectFactory {
         interfaceMap.put(Cleaner.class, ConsoleCleaner.class);
     }
 
+    private ObjectFactoryImpl() {
+
+    }
+
     @SneakyThrows
     @Override
     public Object createObject(Class<?> type) {
-        Class<?> objectClass = !type.isInterface() ? type :  Optional.ofNullable(interfaceMap.get(type))
+        Class<?> objectClass = !type.isInterface() ? type : Optional.ofNullable(interfaceMap.get(type))
                 .orElseThrow(() -> new IllegalArgumentException("Interface type [" + type.getSimpleName() + "] is not found"));
         return objectClass.getDeclaredConstructor().newInstance();
     }
