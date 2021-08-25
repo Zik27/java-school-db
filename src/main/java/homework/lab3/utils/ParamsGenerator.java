@@ -2,6 +2,7 @@ package homework.lab3.utils;
 
 import com.github.javafaker.Faker;
 
+import java.util.List;
 import java.util.Random;
 
 public class ParamsGenerator {
@@ -14,5 +15,10 @@ public class ParamsGenerator {
 
     public static String generateRndName() {
         return GEN_NAME.name().name();
+    }
+
+    public static <T> T getRandomElement(List<T> list) {
+        int i = generateRndNumberInRange(0, list.size()-1);
+        return list.get(i);
     }
 }
