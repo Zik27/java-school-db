@@ -6,7 +6,7 @@ package my_spring;
  */
 public class Main {
     public static void main(String[] args) {
-        IRobot robot = ObjectFactory.getInstance().createObject(IRobot.class);
-        robot.cleanRoom();
+        IRobot iRobot = ObjectFactory.getInstance().createObject(IRobot.class);
+        iRobot.cleanRoom();
     }
 }
