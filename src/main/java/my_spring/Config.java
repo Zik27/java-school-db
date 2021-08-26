@@ -5,5 +5,4 @@ package my_spring;
  */
 public interface Config {
     <T> Class<T> getImplClass(Class<T> type);
-    <T> Class<T> getProxyClass(Class<T> type);
 }

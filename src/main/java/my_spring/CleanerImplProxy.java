@@ -1,10 +1,9 @@
 package my_spring;
 
-import lombok.AllArgsConstructor;
 
-@AllArgsConstructor
 public class CleanerImplProxy implements Cleaner {
-    private final CleanerImpl cleaner;
+    @InjectByType
+    private CleanerImpl cleaner;
 
     @Override
     public void clean() {
