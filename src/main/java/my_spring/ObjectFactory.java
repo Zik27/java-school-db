@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import org.reflections.Reflections;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,16 +15,20 @@ public class ObjectFactory {
     @Getter
     private static final ObjectFactory instance = new ObjectFactory();
     private final Config config = new JavaConfig();
-    private static final Reflections scanner = new Reflections("my_spring");
-    private static final Set<Class<? extends ObjectConfigurator>> injectors = scanner.getSubTypesOf(ObjectConfigurator.class);
+    private final Reflections scanner = new Reflections("my_spring");
+    private final List<ObjectConfigurator> configurators = new ArrayList<>();
 
+    @SneakyThrows
     private ObjectFactory() {
+        for (var configurator : scanner.getSubTypesOf(ObjectConfigurator.class)) {
+            configurators.add(configurator.getDeclaredConstructor().newInstance());
+        }
     }
 
     @SneakyThrows
     private <T> void configureObject(T obj) {
-        for (var injector : injectors) {
-            injector.getDeclaredConstructor().newInstance().configure(obj);
+        for (var configurator : configurators) {
+            configurator.configure(obj);
         }
     }
 
