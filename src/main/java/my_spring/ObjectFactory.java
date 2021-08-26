@@ -12,11 +12,12 @@ public class ObjectFactory {
     @Getter
     private static final ObjectFactory instance = new ObjectFactory();
     private final Config config = new JavaConfig();
-    private final Reflections scanner = new Reflections("my_spring");
+    private static final Reflections scanner = new Reflections("my_spring");
+    private static final Set<Class<? extends ObjectConfigurator>> injectors = scanner.getSubTypesOf(ObjectConfigurator.class);
+
 
     @SneakyThrows
     private <T> void configureObject(T obj) {
-        Set<Class<? extends ObjectConfigurator>> injectors = scanner.getSubTypesOf(ObjectConfigurator.class);
         for (Class<? extends ObjectConfigurator> injector : injectors) {
             injector.getDeclaredConstructor().newInstance().configure(obj);
         }
