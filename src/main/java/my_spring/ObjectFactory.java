@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import org.reflections.Reflections;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -19,17 +20,15 @@ public class ObjectFactory {
     private final List<ObjectConfigurator> configurators = new ArrayList<>();
 
     @SneakyThrows
-    private ObjectFactory() {
+    public ObjectFactory() {
         for (var configurator : scanner.getSubTypesOf(ObjectConfigurator.class)) {
             configurators.add(configurator.getDeclaredConstructor().newInstance());
         }
     }
 
     @SneakyThrows
-    private <T> void configureObject(T obj) {
-        for (var configurator : configurators) {
-            configurator.configure(obj);
-        }
+    private <T> void configure(T obj) {
+        configurators.forEach(conf -> conf.configure(obj));
     }
 
     private <T> Class<T> resolveImple(Class<T> type) {
@@ -48,10 +47,21 @@ public class ObjectFactory {
     }
 
     @SneakyThrows
+    private <T> void runInit(T obj) {
+        for (Method declaredMethod : obj.getClass().getDeclaredMethods()) {
+            if (declaredMethod.getName().startsWith("init") && declaredMethod.getParameterCount() == 0) {
+                declaredMethod.setAccessible(true);
+                declaredMethod.invoke(obj);
+            }
+        }
+    }
+
+    @SneakyThrows
     public <T> T createObject(Class<T> type) {
         type = resolveImple(type);
         T t = type.getDeclaredConstructor().newInstance();
-        configureObject(t);
+        configure(t);
+        runInit(t);
         return t;
     }
 }
