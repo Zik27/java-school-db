@@ -3,6 +3,7 @@ package my_spring;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.reflections.Reflections;
+
 import java.util.Set;
 
 /**
@@ -15,6 +16,8 @@ public class ObjectFactory {
     private static final Reflections scanner = new Reflections("my_spring");
     private static final Set<Class<? extends ObjectConfigurator>> injectors = scanner.getSubTypesOf(ObjectConfigurator.class);
 
+    private ObjectFactory() {
+    }
 
     @SneakyThrows
     private <T> void configureObject(T obj) {
