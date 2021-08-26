@@ -1,7 +1,10 @@
 package my_spring;
 
+/**
+ * @author Evgeny Borisov
+ */
+public class BenchmarkCleanerImplWrapper implements Cleaner { //or extends CleanerImpl
 
-public class CleanerImplProxy implements Cleaner {
     @InjectByType
     private CleanerImpl cleaner;
 
@@ -10,10 +13,9 @@ public class CleanerImplProxy implements Cleaner {
         long start = System.nanoTime();
         cleaner.clean();
         long end = System.nanoTime();
-        System.out.println(end - start);
+        System.out.println(end-start);
     }
 
-    @Override
     public void test() {
         System.out.println("TEST");
     }

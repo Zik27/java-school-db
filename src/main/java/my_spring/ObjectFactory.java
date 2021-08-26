@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+//1. Refactor the code, extract proxy benchmark logic from ObjectFactory
+//2. Add additional support for @Benchmark annotation, method marked with @Benchmark should be benchmarked and other not
+//3. Write support for proxy classes, which doesn't have any interfaces   (use CGLIB)
+
 /**
  * @author Evgeny Borisov
  */
@@ -62,6 +66,6 @@ public class ObjectFactory {
         T t = type.getDeclaredConstructor().newInstance();
         configure(t);
         runInit(t);
-        return t;
+        return ProxyService.getInstance().configureProxy(t);
     }
 }

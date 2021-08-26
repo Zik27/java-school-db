@@ -10,9 +10,17 @@ public class CleanerImpl implements Cleaner {
     private int repeat;
 
     @Override
+    @Benchmark
     public void clean() {
         IntStream.range(0, repeat)
                 .mapToObj(i -> "VVVVVVVvvvvvvvvvvvvvvvvv")
+                .forEach(System.out::println);
+    }
+
+    @Override
+    public void test() {
+        IntStream.range(0, repeat)
+                .mapToObj(i -> "TEST")
                 .forEach(System.out::println);
     }
 }

@@ -5,7 +5,6 @@ package my_spring;
  * @author Evgeny Borisov
  */
 public class IRobot {
-    //todo make support for @InjectByType
     @InjectByType
     private Speaker speaker;
     @InjectByType
@@ -14,6 +13,7 @@ public class IRobot {
     public void cleanRoom() {
         speaker.speak("Я начал работать");
         cleaner.clean();
+        cleaner.test();
         speaker.speak("Я закончил работать");
     }
 }
