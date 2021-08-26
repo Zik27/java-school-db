@@ -57,11 +57,17 @@ public class ObjectFactory {
     }
 
     @SneakyThrows
+    private <T> T resolveProxy(T obj) {
+        Class<?> proxyClass = config.getProxyClass(obj.getClass());
+        return proxyClass != null ? (T) proxyClass.getDeclaredConstructor(obj.getClass()).newInstance(obj) : obj;
+    }
+
+    @SneakyThrows
     public <T> T createObject(Class<T> type) {
         type = resolveImple(type);
         T t = type.getDeclaredConstructor().newInstance();
         configure(t);
         runInit(t);
-        return t;
+        return resolveProxy(t);
     }
 }
