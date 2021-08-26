@@ -18,7 +18,7 @@ public class ObjectFactory {
 
     @SneakyThrows
     private <T> void configureObject(T obj) {
-        for (Class<? extends ObjectConfigurator> injector : injectors) {
+        for (var injector : injectors) {
             injector.getDeclaredConstructor().newInstance().configure(obj);
         }
     }
