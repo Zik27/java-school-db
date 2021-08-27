@@ -11,7 +11,7 @@ public class AnnotationsUtils {
                 .anyMatch(method -> method.isAnnotationPresent(annotation));
     }
 
-    public static boolean hasAnnotationOrHasAnnotatedMethod(Class<?> type, Class<? extends Annotation> annotation, Method calledMethod) {
+    public static boolean hasAnnotation(Class<?> type, Class<? extends Annotation> annotation, Method calledMethod) {
         return type.isAnnotationPresent(annotation) ||
                 Arrays.stream(type.getDeclaredMethods())
                         .anyMatch(m -> m.isAnnotationPresent(annotation) && m.getName().equals(calledMethod.getName()));
