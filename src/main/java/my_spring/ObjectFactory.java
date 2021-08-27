@@ -22,6 +22,7 @@ public class ObjectFactory {
     private final Config config = new JavaConfig();
     private final Reflections scanner = new Reflections("my_spring");
     private final List<ObjectConfigurator> configurators = new ArrayList<>();
+    private final ProxyConfiguratorService proxyConfigurator = new ProxyConfiguratorService();
 
     @SneakyThrows
     public ObjectFactory() {
@@ -66,6 +67,6 @@ public class ObjectFactory {
         T t = type.getDeclaredConstructor().newInstance();
         configure(t);
         runInit(t);
-        return ProxyService.getInstance().configureProxy(t);
+        return proxyConfigurator.configureAllProxy(t);
     }
 }

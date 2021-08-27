@@ -1,6 +1,11 @@
 package my_spring;
 
 
+import my_spring.annotations.InjectByType;
+import my_spring.cleaner.Cleaner;
+import my_spring.cleaner.CleanerImpl;
+import my_spring.speaker.Speaker;
+
 /**
  * @author Evgeny Borisov
  */

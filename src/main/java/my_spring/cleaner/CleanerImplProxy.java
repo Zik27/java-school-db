@@ -1,5 +1,9 @@
-package my_spring;
+package my_spring.cleaner;
 
+
+import my_spring.annotations.InjectByType;
+import my_spring.cleaner.Cleaner;
+import my_spring.cleaner.CleanerImpl;
 
 public class CleanerImplProxy implements Cleaner {
     @InjectByType

@@ -2,6 +2,7 @@ package my_spring;
 
 import homework.lab3.utils.ParamsGenerator;
 import lombok.SneakyThrows;
+import my_spring.annotations.InjectRandomInt;
 
 import java.lang.reflect.Field;
 

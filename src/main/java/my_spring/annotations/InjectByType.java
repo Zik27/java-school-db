@@ -1,6 +1,4 @@
-package my_spring;/**
- * @author Evgeny Borisov
- */
+package my_spring.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,7 +8,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Retention(RUNTIME)
 @Target(ElementType.FIELD)
-public @interface InjectRandomInt {
-    int min();
-    int max();
+public @interface InjectByType {
+
 }

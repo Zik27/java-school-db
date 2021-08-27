@@ -1,11 +1,12 @@
-package my_spring;
+package my_spring.proxy_configurators.handlers;
 
 import lombok.AllArgsConstructor;
+import my_spring.annotations.Benchmark;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-import static my_spring.AnnotationsUtils.isAnnotated;
+import static my_spring.utils.AnnotationsUtils.isAnnotated;
 
 @AllArgsConstructor
 public class BenchmarkInvocationHandler<T> implements InvocationHandler {

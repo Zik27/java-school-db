@@ -1,5 +1,10 @@
 package my_spring;
 
+import my_spring.cleaner.Cleaner;
+import my_spring.cleaner.CleanerImpl;
+import my_spring.speaker.ConsoleSpeaker;
+import my_spring.speaker.Speaker;
+
 import java.util.HashMap;
 import java.util.Map;
 

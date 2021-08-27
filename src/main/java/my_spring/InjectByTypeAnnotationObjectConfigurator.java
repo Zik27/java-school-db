@@ -1,6 +1,7 @@
 package my_spring;
 
 import lombok.SneakyThrows;
+import my_spring.annotations.InjectByType;
 
 import java.lang.reflect.Field;
 

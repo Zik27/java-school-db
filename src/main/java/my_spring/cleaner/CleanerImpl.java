@@ -1,15 +1,18 @@
-package my_spring;
+package my_spring.cleaner;
+
+import my_spring.annotations.Benchmark;
+import my_spring.annotations.InjectRandomInt;
 
 import java.util.stream.IntStream;
 
 /**
  * @author Evgeny Borisov
  */
-public class CleanerImpl implements Cleaner {
+
+public class CleanerImpl implements Cleaner{
     @InjectRandomInt(min = 3, max = 5)
     private int repeat;
 
-    @Override
     @Benchmark
     public void clean() {
         IntStream.range(0, repeat)
@@ -17,7 +20,6 @@ public class CleanerImpl implements Cleaner {
                 .forEach(System.out::println);
     }
 
-    @Override
     public void test() {
         IntStream.range(0, repeat)
                 .mapToObj(i -> "TEST")

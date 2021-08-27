@@ -1,5 +1,7 @@
-package my_spring;
+package my_spring.speaker;
 
+
+import my_spring.speaker.Speaker;
 
 /**
  * @author Evgeny Borisov
