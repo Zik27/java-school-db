@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 public class TelegramMessageProcessor implements MessageProcessor {
     @Override
     public void execute(Message message) {
-        //40 lines of code
         System.out.println("Telegram was sent with text: " + message.getContent());
     }
 }

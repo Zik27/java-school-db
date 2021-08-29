@@ -13,14 +13,14 @@ import java.util.List;
  */
 @Component
 public class DataProducer {
-    private static List<String> channels;
+    private List<String> channels;
 
     @Value("${channels}")
     private void setChannels(String[] channels) {
-        DataProducer.channels = Arrays.asList(channels);
+        this.channels = Arrays.asList(channels);
     }
 
-    public static Message generateMessage() {
+    public Message generateMessage() {
         return Message.builder()
                 .channelName(ParamsGenerator.getRandomElement(channels))
                 .content(Faker.instance().chuckNorris().fact())

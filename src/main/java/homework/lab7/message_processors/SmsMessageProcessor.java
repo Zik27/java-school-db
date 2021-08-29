@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 public class SmsMessageProcessor implements MessageProcessor {
     @Override
     public void execute(Message message) {
-        //40 lines of code
         System.out.println("SMS was sent with text: " + message.getContent());
     }
 }
