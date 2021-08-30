@@ -21,13 +21,12 @@ public class ExceptionHandlerAspect {
     @SneakyThrows
     @Around("execution(* aspect.services..*.*(..))")
     public Object handleDBException(ProceedingJoinPoint pjp) {
-        Object retVal = null;
         try {
-            retVal = pjp.proceed();
+            return pjp.proceed();
         } catch (DBException exception) {
             dbExceptionHandler.handle(exception);
+            throw new Exception();
         }
-        return retVal;
     }
 
 //    @SneakyThrows

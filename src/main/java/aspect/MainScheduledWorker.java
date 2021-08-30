@@ -16,6 +16,10 @@ public class MainScheduledWorker {
 
     @Scheduled(fixedDelay = 20000)
     public void doWork() {
-        creator.create();
+        try {
+            creator.create();
+        } catch (Exception e) {
+            System.out.println("У нас проблемы... База перегружается");
+        }
     }
 }
