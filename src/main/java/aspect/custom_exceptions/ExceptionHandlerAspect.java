@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class ExceptionHandlerAspect {
-    private static boolean isHandled;
+    private DBException lastEx;
 
     @Autowired
     private DBExceptionHandler dbExceptionHandler;
@@ -31,12 +31,11 @@ public class ExceptionHandlerAspect {
 //        }
 //    }
 
-    @SneakyThrows
     @AfterThrowing(pointcut = "execution(* aspect.services..*.*(..))", throwing = "ex")
     public void handleDBException(DBException ex) {
-        if (!isHandled) {
+        if (!ex.equals(lastEx)) {
             dbExceptionHandler.handle(ex);
-            isHandled = true;
+            lastEx = ex;
         }
     }
 }
