@@ -13,12 +13,11 @@ public class MainScheduledWorker {
     @Autowired
     private Creator creator;
 
-
     @Scheduled(fixedDelay = 20000)
     public void doWork() {
         try {
             creator.create();
-        } catch (Exception e) {
+        } catch (DBException e) {
             System.out.println("У нас проблемы... База перегружается");
         }
     }
